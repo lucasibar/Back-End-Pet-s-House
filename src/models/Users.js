@@ -13,25 +13,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    height: {
-      type: DataTypes.STRING
-      ,
-      allowNull: false,
-    },
-    weight: {
+    image: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    life_span: {
-      type: DataTypes.STRING
-    },
-    img: {
-      type: DataTypes.STRING,
-      defaultValue: 'https://i.pinimg.com/originals/37/2c/db/372cdbb7af08ad27524ef53c53e1ba8d.jpg',
+      defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
     }, 
-    otroCampo:{
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    rol: {
+      type: DataTypes.STRING
     }
   },
   {
