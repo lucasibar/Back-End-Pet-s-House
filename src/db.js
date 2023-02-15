@@ -6,7 +6,7 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/petshouse`, {
   logging: false,
   native: false,
 });
@@ -29,10 +29,10 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Raza , Temperamento } = sequelize.models;
+const { Users , Pets } = sequelize.models;
 
-Raza.belongsToMany(Temperamento, { through: "TemperamentoRaza" });
-Temperamento.belongsToMany(Raza, { through: "TemperamentoRaza" });
+Users.belongsToMany(Pets, { through: "PetsUsers" });
+Pets.belongsToMany(Users, { through: "PetsUsers" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

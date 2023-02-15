@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-  sequelize.define('Temperamento', {
+  sequelize.define('Pets', {
     id: {
       primaryKey: true,
       type: DataTypes.UUID,
