@@ -10,5 +10,10 @@ sequelize.define('Donations', {
   money:{
     type: DataTypes.INTEGER
   }
-})
+},
+{
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+  })
 }

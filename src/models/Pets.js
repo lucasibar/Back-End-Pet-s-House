@@ -32,7 +32,12 @@ sequelize.define('Pets', {
   healthBook:{
     type: DataTypes.BOOLEAN
   }
-});
+},
+{
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+  });
 };
 
 

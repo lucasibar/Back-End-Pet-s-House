@@ -13,5 +13,10 @@ sequelize.define('Publications', {
   date:{
     type: DataTypes.DATEONLY   
   }
-})
+},
+{
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+  })
 }
