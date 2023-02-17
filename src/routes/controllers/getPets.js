@@ -2,10 +2,8 @@ const { Pets } = require("../../db");
 
 module.exports = {
 getPets: async function () {
-
 try{
   const petsBDD = await Pets.findAll();
-  console.log(petsBDD)
   const petsJSON = petsBDD.map(el=>el.toJSON())
   return [petsJSON]
 }

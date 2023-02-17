@@ -17,10 +17,5 @@ petsRoutes.post('/',async (req, res)=>{
     catch(error){res.status(400).json({Error: error.message})} 
 })
 
-// razaRoutes.get('/:id', async (req, res)=>{
-//     const id = req.params.id
-//     try{res.status(200).json( await getById(id))}
-//     catch(error){res.status(400).json({Error: error.message})} 
-// })
 
 module.exports = petsRoutes
