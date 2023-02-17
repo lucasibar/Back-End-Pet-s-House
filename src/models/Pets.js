@@ -27,7 +27,7 @@ sequelize.define('Pets', {
   },
   healthBook:{
     type: DataTypes.BOOLEAN
-  },
+  }, 
   animal:{
     type: DataTypes.STRING
   },
