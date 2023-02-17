@@ -1,8 +1,7 @@
 const { Router } = require('express');
 const petsRoutes = require ('./petsRoutes')
 const filterRoutes = require('./filterRoutes')
-// const temperamentoRoutes = require ('./temperamentoRoutes')
-// const searchRoutes = require ('./searchRoutes')
+
 var morgan = require('morgan')
 const router = Router();
 
