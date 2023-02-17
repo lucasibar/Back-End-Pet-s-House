@@ -29,10 +29,32 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Users , Pets } = sequelize.models;
+const { Users , Pets, Donatios, Favorites } = sequelize.models;
 
-Users.belongsToMany(Pets, { through: "PetsUsers" });
-Pets.belongsToMany(Users, { through: "PetsUsers" });
+
+
+
+//Cada usuario va a poder darle con el boton adoptar a varias mascotas 
+//y una mascota va a poder ser pedida por varios usuarios hasta que se 
+//se decida el publicante por uno de los aplicantes
+Users.belongsToMany(Pets, { through: "UsersPets" });
+Pets.belongsToMany(Users, { through: "UsersPets" });
+
+//Cada pet va a ser creado por un solo usuario, y el usuario puede publicar varias mascotas
+Users.hasMany(Pets)
+Pets.belongsTo(Users)
+
+//Cada usuario va a tener una lista de favoritos. y una lista de favoritos va a pertenecer a una persona
+Users.hasOne(Favorites);
+Favorites.belongsTo(Users);
+
+
+Favorites.belongsToMany(Pets, { through: "FavoritesPets" });
+Pets.belongsToMany(Favorites, { through: "FavoritesPets" });
+
+
+Users.hasMany(Donatios)
+Donatios.belongsTo(Users)
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -17,20 +17,37 @@ sequelize.define('Pets', {
     defaultValue: 'https://i.pinimg.com/originals/37/2c/db/372cdbb7af08ad27524ef53c53e1ba8d.jpg',
   }, 
   age: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER 
   },
   description: {
     type: DataTypes.STRING
   },
-  weight:{
+  size:{
     type: DataTypes.INTEGER
-  },
-
-  animalType:{
-    type: DataTypes.ENUM('perro', 'gato', 'pescado', 'conejo', 'vibora', 'araña', 'hamster', 'tortuga', 'gallina', 'cerdo')
   },
   healthBook:{
     type: DataTypes.BOOLEAN
+  },
+  animal:{
+    type: DataTypes.STRING
+  },
+  active:{
+    type: DataTypes.BOOLEAN
+  },
+  date:{
+    type: DataTypes.DATEONLY
+  }, 
+  province:{
+    type: DataTypes.STRING
+  },
+  location:{
+    type: DataTypes.STRING
+  },
+  zone:{
+    type: DataTypes.STRING
+  },
+  sex:{
+    type: DataTypes.ENUM(masculino, femenino)
   }
 });
 };
