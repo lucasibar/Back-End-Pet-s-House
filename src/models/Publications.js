@@ -1,14 +1,17 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-sequelize.define('Donations', {
+sequelize.define('Publications', {
   id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
   },
-  money:{
-    type: DataTypes.INTEGER
+  active:{
+    type: DataTypes.BOOLEAN
+  },
+  date:{
+    type: DataTypes.DATEONLY   
   }
 },
 {
