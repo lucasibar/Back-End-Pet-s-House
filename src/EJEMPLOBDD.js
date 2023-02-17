@@ -1,15 +1,4 @@
-const { Router } = require('express');
-const { Pets, User } = require("../db");
-const petsRoutes = require ('./petsRoutes')
-var morgan = require('morgan')
-
-     
-
-const router = Router();
-router.use(morgan('tiny'))
-
-
-const ejemplo = [
+[
     {
         id:1,
         name: "fido",
@@ -87,33 +76,11 @@ const ejemplo = [
     }
 ]
 
-router.use((req, res, next) => {
-    console.log("HASTA ACA LEGUEEEEEEEEEEE")
-    const promises = []
-    ejemplo.forEach(e => {
-    const newPet = Pets.create({ 
-        name: e.name, 
-        image: e.image, 
-        age: e.age, 
-        description: e.description, 
-        size: e.size, 
-        animal: e.animal, 
-        healthBook: e.healthBook, 
-        province: e.province, 
-        location: e.location, 
-        zone: e.zone, 
-        sex: e.sex
-    })
-    newPet.addUser(e.userID)
-    promises.push(newPet)
-  })
-  Promise.all(promises)
-
-    next();
-  });
-
-  router.use('/pets', petsRoutes)
 
 
 
-module.exports = router;
+INSERT INTO "Users" (  name, image, email, password)
+VALUES
+('Harry', null, "harry@gmail.com", "harr54321" ),
+('Chris', null, "chris@gmail.com", "chris87654" ),
+('Tom', null, "tom@gmail.com", "tomm65432" );

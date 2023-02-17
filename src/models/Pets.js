@@ -47,7 +47,7 @@ sequelize.define('Pets', {
     type: DataTypes.STRING
   },
   sex:{
-    type: DataTypes.ENUM(masculino, femenino)
+    type: DataTypes.ENUM ( "masculino", "femenino")
   }
 },
 {

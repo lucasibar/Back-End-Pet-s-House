@@ -7,6 +7,5 @@ try{
   const petsJSON = petsBDD.map(el=>el.toJSON())
   return [petsJSON]
 }
-catch{throw Error ("Fallo la coneccion con la base de datos o la api")}
-
+catch{throw Error ("Fallo la coneccion con la base de datos")}
 }}
