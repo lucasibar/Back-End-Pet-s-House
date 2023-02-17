@@ -49,7 +49,12 @@ sequelize.define('Pets', {
   sex:{
     type: DataTypes.ENUM(masculino, femenino)
   }
-});
+},
+{
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false
+  });
 };
 
 

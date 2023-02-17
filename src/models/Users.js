@@ -1,8 +1,6 @@
 const { DataTypes } = require('sequelize');
 
-
 module.exports = (sequelize) => {
-
   sequelize.define('Users', {
     id: {
       primaryKey: true,
@@ -24,14 +22,11 @@ module.exports = (sequelize) => {
     password:{
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    rol: {
-      type: DataTypes.ENUM(usuario, administrador)
     }
-  },
-  {
-    timestamps: false,
-    createdAt: false,
-    updatedAt: false
-  });
+},
+{
+timestamps: false,
+createdAt: false,
+updatedAt: false
+});
 };
