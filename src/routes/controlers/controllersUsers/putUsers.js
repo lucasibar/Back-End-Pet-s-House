@@ -1,7 +1,7 @@
-const { Users } = require("../../db");
+const { Users } = require("../../../db");
 
 
-module.exports = { 
+module.exports = {  
   putUsers: async function (usuarioID){
   const userId = await Users.findOne({
     where:{

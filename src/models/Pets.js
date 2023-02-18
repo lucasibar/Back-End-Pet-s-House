@@ -2,15 +2,15 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 sequelize.define('Pets', {
+
   id: {
-    primaryKey: true,
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    allowNull: false
+    type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false,
+    //allowNull: false,
   },
   image: {
     type: DataTypes.STRING,
@@ -23,7 +23,7 @@ sequelize.define('Pets', {
     type: DataTypes.STRING
   },
   size:{
-    type: DataTypes.INTEGER
+    type: DataTypes.ENUM("grande", "chico","mediano")
   },
   healthBook:{
     type: DataTypes.BOOLEAN

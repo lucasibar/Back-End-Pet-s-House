@@ -1,4 +1,4 @@
-const { Pets } = require("../../db");
+const { Pets } = require("../../../db");
 
 module.exports = {
 getPetsByName: async function (name) {
