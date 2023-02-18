@@ -77,7 +77,7 @@
 ]
 
 
-
+//SQU
 
 INSERT INTO "Users" (  name, image, email, password)
 VALUES

@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const { getPets} = require("./controllers/getPets")
-const { getPetsByName} = require("./controllers/getPetsByName")
-const { postPets} = require("./controllers/postPets")
+const { getPets} = require("../controllersPets/getPets")
+const { getPetsByName} = require("../controllersPets/getPetsByName")
+const { postPets} = require("../controllersPets/postPets")
 
 const petsRoutes = Router();
 

@@ -22,6 +22,14 @@ module.exports = (sequelize) => {
     password:{
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    rol:{
+      type: DataTypes.ENUM("usuario", "administrador"),
+      allowNull: false,
+    },
+    logged:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
 },
 {
