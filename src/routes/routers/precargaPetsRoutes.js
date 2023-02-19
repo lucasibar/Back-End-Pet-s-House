@@ -94,7 +94,7 @@ const pet1 = [{
 precargaPetsRoutes.get('/', async (req, res)=>{
     const dataValidation = await Pets.findAll()
     if(dataValidation.length === 0){
-        console.log("hola aaaaaaaaaaaaaa")
+        
         const promisearray = ejemplos.map( (e)=>
              Pets.create({
                 name: e.name ,
