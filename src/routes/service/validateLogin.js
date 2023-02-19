@@ -12,7 +12,7 @@ validateLogin: async (req, res, next) => {
   
     
     if(user.logged){
-        console.log("LLEGA POR PARAMS", user)
+        
     next()
     }
     else{

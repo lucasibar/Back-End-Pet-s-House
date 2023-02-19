@@ -2,6 +2,7 @@ const { Router } = require('express');
 const petsRoutes = require ('./routers/petsRoutes')
 const userRoutes = require ('./routers/userRoutes')
 const precargaPetsRoutes = require ('./routers/precargaPetsRoutes')
+const logRoutes = require ('./service/logRoutes')
 //const administrationRoutes = require ('./routers/administrationRoutes')
 var morgan = require('morgan')
 
@@ -102,6 +103,7 @@ router.use(morgan('tiny'))
   
 // subirEjemplosBDD();
 router.use('/precarga', precargaPetsRoutes)
+router.use('/login', logRoutes)
 
 router.use('/users', userRoutes)
 

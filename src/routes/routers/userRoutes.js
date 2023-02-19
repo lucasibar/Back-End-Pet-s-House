@@ -4,7 +4,7 @@ const { putUsers} = require("../controlers/controllersUsers/putUsers")
 const { validateLogin} = require("../service/validateLogin")
 
 const userRoutes = Router();
-
+//userRoutes.get('/:idAdmin', validacionAdmin, async (req, res)=>{
 userRoutes.get('/', async (req, res)=>{
     try{res.status(200).json("Traeria todos los usuarios con su informacion")}
     catch(error){res.status(400).json({Error: error.message})} 
@@ -15,6 +15,7 @@ userRoutes.post('/',  async (req, res)=>{
         res.status(200).json( await postUsers(newUsuario))}
     catch(error){res.status(400).json({Error: error.message})} 
 })
+
 //Cierra sesion
 userRoutes.put('/logOff/:idUser', validateLogin,  async (req, res)=>{
      const { idUser }= req.params 
