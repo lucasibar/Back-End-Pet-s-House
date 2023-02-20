@@ -32,11 +32,9 @@ sequelize.define('Pets', {
     type: DataTypes.STRING
   },
   active:{
-    type: DataTypes.BOOLEAN
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
   },
-  date:{
-    type: DataTypes.DATEONLY
-  }, 
   province:{
     type: DataTypes.STRING
   },

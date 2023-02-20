@@ -9,10 +9,7 @@ validateLogin: async (req, res, next) => {
             id: userId
         }
     }).then(data => data[0].toJSON())
-  
-    
-    if(user.logged){
-        
+    if(user.logged){ 
     next()
     }
     else{

@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { Users } = require("../../db");
 const { getPets} = require("../controlers/controllersPets/getPets")
 const { getPetsByName} = require("../controlers/controllersPets/getPetsByName")
 const { postPets} = require("../controlers/controllersPets/postPets")
@@ -25,11 +24,12 @@ petsRoutes.post('/:idUser', validateLogin,  async (req, res)=>{
     catch(error){res.status(400).json({Error: error.message})} 
 })
 
-petsRoutes.get('/favorites/:idUser', validateLogin, async (req, res)=>{
-    try{
-    res.status(200).json( "LISTA DE FAVORITOS EN TRABAJO")}
-    catch(error){res.status(400).json({Error: error.message})} 
-})
+// petsRoutes.get('/favorites/:idUser', validateLogin, async (req, res)=>{
+//     const { idPet } = req.query
+//     try{
+//     res.status(200).json( idPet? addFavorite(idPet): getFavorites())}
+//     catch(error){res.status(400).json({Error: error.message})} 
+// })
 
 
 module.exports = petsRoutes

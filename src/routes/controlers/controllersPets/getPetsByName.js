@@ -4,9 +4,7 @@ module.exports = {
 getPetsByName: async function (name) {
 try{
   const searchPetByName = await Pets.findAll({
-    where:{
-        name
-    }
+    where:{name}
   });
   return searchPetByName
 }
