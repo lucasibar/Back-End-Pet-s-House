@@ -1,6 +1,6 @@
 const { Router } = require('express'); 
 const { postUsers} = require("../controlers/controllersUsers/postUsers")
-const { putUsers} = require("../controlers/controllersUsers/putUsers")
+const { login} = require("../service/login")
 const { validateLogin} = require("../service/validateLogin")
 
 const userRoutes = Router();
@@ -20,7 +20,7 @@ userRoutes.post('/',  async (req, res)=>{
 userRoutes.put('/logOff/:idUser', validateLogin,  async (req, res)=>{
      const { idUser }= req.params 
     try{
-        res.status(200).json( await putUsers(idUser))}
+        res.status(200).json( await login(idUser))}
     catch(error){res.status(400).json({Error: error.message})} 
 })
 

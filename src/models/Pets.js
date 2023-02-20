@@ -43,9 +43,6 @@ sequelize.define('Pets', {
   location:{
     type: DataTypes.STRING
   },
-  zone:{
-    type: DataTypes.STRING
-  },
   sex:{
     type: DataTypes.ENUM ( "masculino", "femenino")
   }

@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const { putUsers} = require("../controlers/controllersUsers/putUsers")
-const { login} = require("../controlers/controllersUsers/login")
+const { login} = require("../service/login")
+const { logof} = require("../service/logof")
 const { validateLogin} = require("../service/validateLogin")
 
 const logRoutes = Router();
@@ -13,7 +13,7 @@ logRoutes.put('/:idUser',  async (req, res)=>{
 })
 
 //Cierra sesion
-logRoutes.put('/:idUser', validateLogin,  async (req, res)=>{
+logRoutes.put('/logof/:idUser', validateLogin,  async (req, res)=>{
     const { idUser }= req.params 
    try{
        res.status(200).json( await logof(idUser))}

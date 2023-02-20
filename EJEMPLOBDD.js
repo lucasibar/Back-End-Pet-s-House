@@ -105,7 +105,7 @@
     "province": "BuenosAires",
     "location": "SanFernando",
          "active":"false",
-    "zone":"",
+
              "sex": "femenino"
      
 }

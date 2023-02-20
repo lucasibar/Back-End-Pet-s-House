@@ -107,7 +107,6 @@ precargaPetsRoutes.get('/', async (req, res)=>{
                 sex: e.sex,
                 province: e.province,
                 location: e.location,
-                zone: e.zone,
             })
         )
         return Promise.all(promisearray)
