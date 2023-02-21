@@ -38,8 +38,8 @@ Users.belongsToMany(Pets, { through: "UsersPets" });
 Pets.belongsToMany(Users, { through: "UsersPets" });
 
 //Cada pet va a ser creado por un solo usuario, y el usuario puede publicar varias mascotas
-Users.hasMany(Pets)
-Pets.belongsTo(Users)
+Users.hasMany(Pets, { as: "publicaciones", foreignKey:"userId"})
+Pets.belongsTo(Users, {as: "user"})
 
 //Cada usuario va a tener una lista de favoritos. y una lista de favoritos va a pertenecer a una persona
 Users.hasOne(Favorites);
