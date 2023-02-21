@@ -6,7 +6,7 @@ const loginRoutes = Router();
 loginRoutes.put('/',  async (req, res)=>{
     const user = req.body.user
     const password = req.body.password
-    console.log(user, password )
+
    try{
        res.status(200).json( await login(user, password))}
    catch(error){res.status(400).json({Error: error.message})} 

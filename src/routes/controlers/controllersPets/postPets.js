@@ -1,4 +1,4 @@
-const { Pets , Users } = require("../../../db");
+const { Pets } = require("../../../db");
 
 
 module.exports = { 
@@ -12,9 +12,9 @@ postPets: async function ({
   healthBook, 
   province, 
   location, 
-  sex 
+  sex,  
 }) {
-  const userId = req.params.idUser
+  
   const newPet = await Pets.create({ 
     name, 
     image, 
@@ -25,11 +25,8 @@ postPets: async function ({
     healthBook, 
     province, 
     location, 
-    sex, 
-    userId: userId,
+    sex
   })
-  await newPet.addUsers(userId);
-
     return `Se creo con exito ${name}`
 }
 }
