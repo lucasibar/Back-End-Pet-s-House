@@ -1,11 +1,12 @@
 const { Pets, Users } = require("../../db");
 const { getPets } = require("../controlers/controllersPets/getPets");
 const { getUsers } = require("../controlers/controllersUsers/getUsers");
+
 const validateDataBase = async (req, res, next)=>{
         const pets = await getPets()
         const users = await getUsers()
         if(pets.length>0 || users.length>0){
-           res.status(200).json("YA HAY SE CARGARON DATOS EN LA BASE DE DATOS")
+          return res.status(200).json("YA HAY SE CARGARON DATOS EN LA BASE DE DATOS")
         }
         next()
     }

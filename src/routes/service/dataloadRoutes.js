@@ -7,10 +7,12 @@ const dataload = Router();
 
 dataload.get('/', validateDataBase, async (req, res)=>{
     try{
-        await Pets.bulkCreate(ejemplosPets)
-        await Users.bulkCreate(ejemplosUsers)
         const pets = await getPets()
         const users = await getUsers()
+        
+        await Pets.bulkCreate(ejemplosPets)
+        await Users.bulkCreate(ejemplosUsers)
+
         res.status(200).json("Se subieron datos de ejemplo en la base de datos")
     }
     catch(error){res.status(400).json({Error: error.message})} 

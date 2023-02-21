@@ -12,8 +12,9 @@ postPets: async function ({
   healthBook, 
   province, 
   location, 
-  sex
+  sex,  
 }) {
+  
   const newPet = await Pets.create({ 
     name, 
     image, 
