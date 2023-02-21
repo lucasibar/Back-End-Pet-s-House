@@ -29,7 +29,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Users , Pets, Donatios, Favorites } = sequelize.models;
+const { Users , Pets, Donations, Favorites } = sequelize.models;
 
 //Cada usuario va a poder darle con el boton adoptar a varias mascotas 
 //y una mascota va a poder ser pedida por varios usuarios hasta que se 
@@ -50,8 +50,8 @@ Favorites.belongsToMany(Pets, { through: "FavoritesPets" });
 Pets.belongsToMany(Favorites, { through: "FavoritesPets" });
 
 
-Users.hasMany(Donatios)
-Donatios.belongsTo(Users)
+Users.hasMany(Donations)
+Donations.belongsTo(Users)
 
 
 module.exports = {
