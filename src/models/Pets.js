@@ -23,13 +23,13 @@ sequelize.define('Pets', {
     type: DataTypes.STRING
   },
   size:{
-    type: DataTypes.ENUM("grande", "chico","mediano")
+    type: DataTypes.ENUM("grande", "pequeño","mediano")
   },
   healthBook:{
     type: DataTypes.BOOLEAN
   }, 
   animal:{
-    type: DataTypes.STRING
+    type: DataTypes.ENUM ( "perros", "gatos","roedores", "aves", "otros")
   },
   active:{
     type: DataTypes.BOOLEAN,
@@ -46,8 +46,8 @@ sequelize.define('Pets', {
   }
 },
 {
-  timestamps: false,
-  createdAt: false,
+  timestamps: true,
+  createdAt: true,
   updatedAt: false
   });
 };

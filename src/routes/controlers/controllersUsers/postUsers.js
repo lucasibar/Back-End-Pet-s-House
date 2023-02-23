@@ -2,15 +2,13 @@ const { Users } = require("../../../db");
 
 
 module.exports = { 
-  postUsers: async function ({ 
-    id, 
+  postUsers: async function ({  
     name, 
     image, 
     email, 
-    password, 
-    rol, 
-    logged}){
-  const newUser = await Users.create({id, name, image, email, password, rol, logged})
+    password 
+    }){
+  const newUser = await Users.create({name, image, email, password})
   
   return `Se creo con exito el usuario ${name}`
 }

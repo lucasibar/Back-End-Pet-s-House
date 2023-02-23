@@ -155,11 +155,11 @@ const pet1 = [{
     "size": "grande",
     "animal": "perro",
     "healthBook":"true",
-    "sex": "femenino",
     "province": "BuenosAires",
     "location": "SanFernando",
     "active":"false",
-    "sex": "femenino" 
+    "sex": "femenino",
+    "idUser":"1"
 }
 //SQU
 
