@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { DataTypes } = require('sequelize');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -29,25 +30,20 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Users , Pets, Donations, Favorites } = sequelize.models;
+const { Users , Pets, Donations } = sequelize.models;
 
 //Cada usuario va a poder darle con el boton adoptar a varias mascotas 
 //y una mascota va a poder ser pedida por varios usuarios hasta que se 
 //se decida el publicante por uno de los aplicantes
-Users.belongsToMany(Pets, { through: "UsersPets" });
-Pets.belongsToMany(Users, { through: "UsersPets" });
+// Users.belongsToMany(Pets, { through: "UsersPets" });
+// Pets.belongsToMany(Users, { through: "UsersPets" });
 
 //Cada pet va a ser creado por un solo usuario, y el usuario puede publicar varias mascotas
-Users.hasMany(Pets, { as: "publicaciones", foreignKey:"userId"})
-Pets.belongsTo(Users, {as: "user"})
+Users.hasMany(Pets)
+Pets.belongsTo(Users)
 
-//Cada usuario va a tener una lista de favoritos. y una lista de favoritos va a pertenecer a una persona
-Users.hasOne(Favorites);
-Favorites.belongsTo(Users);
-
-
-Favorites.belongsToMany(Pets, { through: "FavoritesPets" });
-Pets.belongsToMany(Favorites, { through: "FavoritesPets" });
+Users.belongsToMany(Pets, { through: "FavoritesPets" });
+Pets.belongsToMany(Users, { through: "FavoritesPets" });
 
 
 Users.hasMany(Donations)

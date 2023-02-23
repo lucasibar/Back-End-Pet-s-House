@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
@@ -17,19 +16,15 @@ module.exports = (sequelize) => {
     }, 
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     password:{
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     rol:{
       type: DataTypes.ENUM("usuario", "administrador"),
-      allowNull: false,
-    },
-    logged:{
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      default: "usuario",
     }
 },
 {
