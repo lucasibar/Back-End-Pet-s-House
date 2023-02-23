@@ -1,4 +1,4 @@
-const { Users, Pets } = require("../../../db");
+const { Pets } = require("../../../db");
 
 module.exports = {
   getPublications: async function (idUser) {
