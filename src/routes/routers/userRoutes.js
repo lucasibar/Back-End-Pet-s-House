@@ -21,10 +21,9 @@ userRoutes.post('/',  async (req, res)=>{
     catch(error){res.status(400).json({Error: error.message})} 
 })
 
-userRoutes.put('/:idUser',  async (req, res)=>{
+userRoutes.put('/',  async (req, res)=>{
     const userChangeProperties = req.body
-    const {idUser} = req.params 
-    try{res.status(200).json( await userChanger(userChangeProperties, idUser))}
+    try{res.status(200).json( await userChanger(userChangeProperties))}
     catch(error){res.status(400).json({Error: error.message})} 
 })
 

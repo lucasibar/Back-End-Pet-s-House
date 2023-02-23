@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { DataTypes } = require('sequelize');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -41,7 +42,6 @@ const { Users , Pets, Donations } = sequelize.models;
 Users.hasMany(Pets)
 Pets.belongsTo(Users)
 
-const FavoritesPets = sequelize.define('FavoritesPets', {}, { timestamps: false });
 Users.belongsToMany(Pets, { through: "FavoritesPets" });
 Pets.belongsToMany(Users, { through: "FavoritesPets" });
 
