@@ -5,6 +5,7 @@ module.exports = {
   try{
     const userID = await Users.findByPk(idUser)
     const petID =await Pets.findByPk(idPets)
+    await userID.addPets(idPets)
   return "respuesta"
   }
   catch{throw Error ("Fallo la coneccion con la base de datos")}

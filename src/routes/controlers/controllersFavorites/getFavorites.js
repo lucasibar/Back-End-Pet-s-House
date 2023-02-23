@@ -3,7 +3,7 @@ const { Users, Pets } = require("../../../db");
 module.exports = {
   getFavorites: async function (idUser) {
   try{
-      console.log('pase')
+
     
 return "respuesta"
 }
