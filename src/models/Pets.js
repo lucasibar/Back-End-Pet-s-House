@@ -2,40 +2,52 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 sequelize.define('Pets', {
+
   id: {
-    primaryKey: true,
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    allowNull: false
+    type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false,
+    //allowNull: false,
   },
   image: {
     type: DataTypes.STRING,
     defaultValue: 'https://i.pinimg.com/originals/37/2c/db/372cdbb7af08ad27524ef53c53e1ba8d.jpg',
   }, 
   age: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER 
   },
   description: {
     type: DataTypes.STRING
   },
-  weight:{
-    type: DataTypes.INTEGER
-  },
-
-  animalType:{
-    type: DataTypes.ENUM('perro', 'gato', 'pescado', 'conejo', 'vibora', 'araña', 'hamster', 'tortuga', 'gallina', 'cerdo')
+  size:{
+    type: DataTypes.ENUM("grande", "pequeño","mediano")
   },
   healthBook:{
     type: DataTypes.BOOLEAN
+  }, 
+  animal:{
+    type: DataTypes.ENUM ( "perros", "gatos","roedores", "aves", "otros")
+  },
+  active:{
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
+  },
+  province:{
+    type: DataTypes.STRING
+  },
+  location:{
+    type: DataTypes.STRING
+  },
+  sex:{
+    type: DataTypes.ENUM ( "masculino", "femenino")
   }
 },
 {
-  timestamps: false,
-  createdAt: false,
+  timestamps: true,
+  createdAt: true,
   updatedAt: false
   });
 };

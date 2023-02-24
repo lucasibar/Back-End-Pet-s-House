@@ -1,15 +1,21 @@
 const { Router } = require('express');
-const razaRoutes = require ('./razaRoutes')
-const temperamentoRoutes = require ('./temperamentoRoutes')
-const searchRoutes = require ('./searchRoutes')
-var morgan = require('morgan')
-const router = Router();
+const petsRoutes = require ('./routers/petsRoutes')
+const userRoutes = require ('./routers/userRoutes')
+const dataloadRoutes = require ('./service/dataloadRoutes')
+const favoritesRoutes = require('./routers/favoritesRoutes');
+const publicationsRoutes = require('./routers/publicationsRoutes');
+var morgan = require('morgan');
 
+const router = Router();
 router.use(morgan('tiny'))
 
-router.use('/dogs', razaRoutes)
-router.use('/temperaments', temperamentoRoutes)
-router.use('/search', searchRoutes)
+//SERVICE
+router.use('/dataload', dataloadRoutes)
+//ROUTERS
+router.use('/users', userRoutes)
+router.use('/pets', petsRoutes)
+router.use('/favorites', favoritesRoutes)
+router.use('/publications', publicationsRoutes)
 
 
 module.exports = router;
