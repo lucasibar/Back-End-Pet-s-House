@@ -9,8 +9,6 @@ postPets: async function ({name, image, age, description, size, animal, healthBo
   const user = await Users.findByPk(idUser);
   console.log(newPet.id)
   await user.addPets(newPet.id)
- 
-
     return `Se creo con exito ${name}`
 }
 }

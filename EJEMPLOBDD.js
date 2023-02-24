@@ -153,7 +153,7 @@ const pet1 = [{
     "age": "2",
     "description":"muy tranquilofido. Es un perro muy grande pero re cariñoso",
     "size": "grande",
-    "animal": "perro",
+    "animal": "perros",
     "healthBook":"true",
     "province": "BuenosAires",
     "location": "SanFernando",
