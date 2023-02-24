@@ -1,11 +1,11 @@
-const { Users, Pets } = require("../../../db");
+const { FavoritesPets  } = require("../../../db");
 
 module.exports = {
-  getFavorites: async function (idUser) {
+getFavorites: async function (idUser) {
   try{
-      console.log('pase')
-    
-return "respuesta"
-}
-catch{throw Error ("Fallo la coneccion con la base de datos")}
+    const favoritesBDD = await FavoritesPets.findAll({
+      where:{UserId: idUser}});
+    return favoritesBDD
+  }catch{throw Error ("Fallo la coneccion con la base de datos")}
 }}
+    

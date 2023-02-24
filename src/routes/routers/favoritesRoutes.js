@@ -6,13 +6,12 @@ const favoritesRoutes = Router();
 
 favoritesRoutes.get('/:idUser',  async (req, res)=>{
     const {idUser }= req.params
-   try{res.status(200).json( await getFavorites({idUser, idPet}))}
+   try{res.status(200).json( await getFavorites(idUser))}
    catch(error){res.status(400).json({Error: error.message})} 
 })
 favoritesRoutes.post('/',  async (req, res)=>{
     const {idPets, idUser } = req.body
-    const respuesta = await createFavorite(idPets, idUser)
-   try{res.status(200).json( respuesta)}
+   try{res.status(200).json( await createFavorite(idPets, idUser) )}
    catch(error){res.status(400).json({Error: error.message})} 
 })
 
