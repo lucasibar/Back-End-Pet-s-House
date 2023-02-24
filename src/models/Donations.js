@@ -9,6 +9,9 @@ sequelize.define('Donations', {
   },
   money:{
     type: DataTypes.INTEGER
+  },
+  date:{
+    type: DataTypes.DATEONLY
   }
 },
 {

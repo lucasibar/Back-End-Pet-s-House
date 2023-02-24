@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { DataTypes } = require('sequelize');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -29,32 +30,17 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Users , Pets, Donations, Publications } = sequelize.models;
+const { Users , Pets, Donations, FavoritesPets } = sequelize.models;
 
-//cada usuario va a poder pedir adoptar mas de un perro, y cada perro puede ser adoptado por varias personas. 
-//esto ocurre hasta que el dueño de la publicacion de decide por dejarselo a un determinado usuario
-Users.belongsToMany(Pets, { through: "UsersPets" });
-Pets.belongsToMany(Users, { through: "UsersPets" });
+Users.hasMany(Pets)
+Pets.belongsTo(Users)
 
-//Cada usuario va a tener una lista con todas las mascotas que tenga publicadas
-Users.hasOne(Publications)
-Publications.belongsTo(Users)
+Users.belongsToMany(Pets, { through: "FavoritesPets" });
+Pets.belongsToMany(Users, { through: "FavoritesPets" });
 
-//Cada lista de publicaciones puede tener mas de unm Pet ya que una casa puede alojar mas de una mascota para adoptar
-//Cada Pet solo pued pertenecer a una lista de publicaciones
-Publications.hasMany(Pets)
-Pets.belongsTo(Publications)
 
-//Cada usuario puede hacer distintas donaciones.
-//Cada donacion va a sser de un usuario determinado 
 Users.hasMany(Donations)
 Donations.belongsTo(Users)
-
-
-
-
-Users.belongsToMany(Pets, { through: "Favorites" });
-Pets.belongsToMany(Users, { through: "Favorites" });
 
 
 module.exports = {
