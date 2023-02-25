@@ -26,7 +26,8 @@ userRoutes.put('/',  async (req, res)=>{
 userRoutes.get('/login',  async (req, res)=>{
     const email = req.body.email
     const password = req.body.password
-   try{res.status(200).json( await login({email, password}))}
+    try{res.status(200).json( "DEVOLVERIA EL NOMBRE DEL USUARIO Y LA IMAGEN")}
+//    try{res.status(200).json( await login(email, password))}
    catch(error){res.status(400).json({Error: error.message})} 
 })
 
