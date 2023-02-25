@@ -10,7 +10,6 @@ class PaymentController {
         emailUser,
         precio
       );
-
       return res.json(payment);
     } catch (error) {
       console.log(error);
