@@ -53,8 +53,8 @@ Pets.belongsTo(Users);
 Users.belongsToMany(Pets, { through: "FavoritesPets" });
 Pets.belongsToMany(Users, { through: "FavoritesPets" });
 
-Users.hasMany(Donations);
-Donations.belongsTo(Users);
+Users.hasMany(Donations, { foreignKey: "UserId" });
+Donations.belongsTo(Users, { foreignKey: "UserId" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
