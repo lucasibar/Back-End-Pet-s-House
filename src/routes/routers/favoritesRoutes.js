@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getFavorites} = require("../controlers/controllersFavorites/getFavorites")
 const { createFavorite} = require("../controlers/controllersFavorites/createFavorite")
+const { deletFavorite} = require("../controlers/controllersFavorites/deletFavorite")
 
 const favoritesRoutes = Router();
 
@@ -14,5 +15,9 @@ favoritesRoutes.post('/',  async (req, res)=>{
    try{res.status(200).json( await createFavorite(idPets, idUser) )}
    catch(error){res.status(400).json({Error: error.message})} 
 })
-
+favoritesRoutes.delete('/',  async (req, res)=>{
+    const {idPets, idUser } = req.body
+   try{res.status(200).json( await deletFavorite(idPets, idUser) )}
+   catch(error){res.status(400).json({Error: error.message})} 
+})
 module.exports = favoritesRoutes
