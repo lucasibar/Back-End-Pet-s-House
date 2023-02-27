@@ -10,7 +10,7 @@ module.exports = {
         UserId:idUser,
         PetId:idPets}
     })
-    if(existeFavorito) return `${pet.name} ya existe en la lista de favortitos de ${user.name}`
+    if(existeFavorito.length>0) return `${pet.name} ya existe en la lista de favortitos de ${user.name}`
     const newFavorite = await FavoritesPets.create()
     await pet.addUser(user.id)
     await user.addPet(pet.id)
