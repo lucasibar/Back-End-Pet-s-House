@@ -8,7 +8,6 @@ module.exports = {
         UserId:idUser,
         PetId:idPets}
     })
-
     return "Se elimino exitosamente la mascota de la lista de favoritos"
   }
   catch{throw Error ("Fallo la coneccion con la base de datos")}
