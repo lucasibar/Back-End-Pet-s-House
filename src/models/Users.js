@@ -29,11 +29,6 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("usuario", "administrador"),
         default: "usuario",
       },
-    },
-    {
-      timestamps: false,
-      createdAt: false,
-      updatedAt: false,
     }
   );
 };
