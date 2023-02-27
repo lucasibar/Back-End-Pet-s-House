@@ -4,8 +4,6 @@ const { ACCESS_TOKEN } = process.env;
 
 class PaymentService {
   async createPayment(emailUser, precio) {
-    const url = "https://api.mercadopago.com/checkout/preferences";
-
     const body = {
       payer_email: emailUser,
       items: [
@@ -26,12 +24,16 @@ class PaymentService {
       },
     };
 
-    const payment = await axios.post(url, body, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      },
-    });
+    const payment = await axios.post(
+      "https://api.mercadopago.com/checkout/preferences",
+      body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+      }
+    );
 
     return payment.data;
   }
