@@ -18,9 +18,9 @@ class PaymentService {
         },
       ],
       back_urls: {
-        failure: "http://localhost:3000/failure",
+        failure: "https://petshousefront.vercel.app/failure",
         pending: "/pending",
-        success: "http://localhost:3000/success",
+        success: "https://petshousefront.vercel.app/success",
       },
     };
 
