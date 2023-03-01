@@ -23,10 +23,11 @@ userRoutes.put('/',  async (req, res)=>{
     try{res.status(200).json( await userChanger(userChangeProperties))}
     catch(error){res.status(400).json({Error: error.message})} 
 })
-userRoutes.get('/login',  async (req, res)=>{
-    const email = req.body.email
-    const password = req.body.password
-   try{res.status(200).json( await login({email, password}))}
+userRoutes.get('/login/:email/:password',  async (req, res)=>{
+    const email = req.params.email
+    const password = req.params.password
+    try{res.status(200).json( await login(email, password))}
+//    try{res.status(200).json( await login(email, password))}
    catch(error){res.status(400).json({Error: error.message})} 
 })
 
