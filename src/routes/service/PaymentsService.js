@@ -4,8 +4,6 @@ const { ACCESS_TOKEN } = process.env;
 
 class PaymentService {
   async createPayment(emailUser, precio) {
-    const url = "https://api.mercadopago.com/checkout/preferences";
-
     const body = {
       payer_email: emailUser,
       items: [
@@ -20,18 +18,22 @@ class PaymentService {
         },
       ],
       back_urls: {
-        failure: "http://localhost:3000/failure",
+        failure: "https://petshousefront.vercel.app/failure",
         pending: "/pending",
-        success: "http://localhost:3000/success",
+        success: "https://petshousefront.vercel.app/success",
       },
     };
 
-    const payment = await axios.post(url, body, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      },
-    });
+    const payment = await axios.post(
+      "https://api.mercadopago.com/checkout/preferences",
+      body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+        },
+      }
+    );
 
     return payment.data;
   }
