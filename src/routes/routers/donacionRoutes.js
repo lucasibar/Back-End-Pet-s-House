@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Users, Donations } = require("../../db");
+const { Donations } = require("../../db");
 const donacionRoutes = Router();
 
 const PaymentController = require("../controlers/controllersDonaciones/PaymentsController");
@@ -27,5 +27,4 @@ donacionRoutes.post("/guardar", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
-
 module.exports = donacionRoutes;
