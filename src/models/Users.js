@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define("Users", {
+  sequelize.define('Users', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -12,18 +12,17 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      defaultValue:
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-    },
+      defaultValue: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+    }, 
     email: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    password: {
+    password:{
       type: DataTypes.STRING,
       allowNull: true,
     },
-    rol: {
+    rol:{
       type: DataTypes.ENUM("usuario", "administrador"),
       defaultValue: "usuario",
     }
@@ -33,5 +32,4 @@ timestamps: true,
 createdAt: true,
 updatedAt: true
 });
-
 };
