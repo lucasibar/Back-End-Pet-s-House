@@ -8,9 +8,14 @@ const userRoutes = Router();
 //userRoutes.get('/:idAdmin', validacionAdmin, async (req, res)=>{
 
 userRoutes.get('/', async (req, res)=>{
-    const { email } = req.body
     try{
-    res.status(200).json(email? await getUsersByEmail(email) :await getUsers())}
+    res.status(200).json(await getUsers())}
+    catch(error){res.status(400).json("No se encontro ningun usuario cargado en la base de datos")} 
+})
+userRoutes.get('/:email', async (req, res)=>{
+    const { email } = req.params
+    try{
+    res.status(200).json(await getUsersByEmail(email))}
     catch(error){res.status(400).json("No se encontro ningun usuario cargado en la base de datos")} 
 })
 userRoutes.post('/',  async (req, res)=>{
