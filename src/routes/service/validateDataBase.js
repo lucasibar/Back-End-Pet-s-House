@@ -75,8 +75,8 @@ const ejemplosUsers =[
     logged:false
 },{
     name:"pepita",
-    image:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-    email:"pepe@gmail.com",
+    image:"",
+    email:"lucas@gmail.com",
     password: 12345,
     rol: "administrador",
     logged:false
