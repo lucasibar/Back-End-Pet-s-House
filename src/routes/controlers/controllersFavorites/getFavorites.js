@@ -3,6 +3,7 @@ const { FavoritesPets, Pets  } = require("../../../db");
 module.exports = {
 getFavorites: async function (idUser) {
   try{
+
     const favoritesBDD = await FavoritesPets.findAll({
       where:{UserId: idUser}});
      const arrayPets =  favoritesBDD.map(async (e)=>{
@@ -14,5 +15,6 @@ getFavorites: async function (idUser) {
       const petsFavoritesInfo = await Promise.all(arrayPets)
       return petsFavoritesInfo
   }catch{throw Error ("Fallo la coneccion con la base de datos")}
+
 }}
     
