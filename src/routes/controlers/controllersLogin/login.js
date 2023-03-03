@@ -9,17 +9,18 @@ module.exports = {
           email: email
         }
       });
-      const existingMail = emailValidation.map(el=>el.toJSON())
+      const existingMail = emailValidation[0].toJSON()
       const passwordValidation = await Users.findAll({
         where:{
           email : email,
           password: password
         }
       });
-      const existingPassword = passwordValidation.map(el=>el.toJSON())
+      const existingPassword = passwordValidation[0].toJSON()
+      console.log(existingPassword)
 
-    if(existingMail>0){
-      if(existingPassword>0){
+    if(existingMail){
+      if(existingPassword){
         return existingPassword
       }
       return 'Contraseña invalida'
