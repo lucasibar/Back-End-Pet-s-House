@@ -25,6 +25,10 @@ module.exports = (sequelize) => {
     rol:{
       type: DataTypes.ENUM("usuario", "administrador"),
       defaultValue: "usuario",
+    },
+    active:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
 },
 {
