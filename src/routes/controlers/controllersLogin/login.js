@@ -17,7 +17,6 @@ module.exports = {
         }
       });
       const existingPassword = passwordValidation[0].toJSON()
-      console.log(existingPassword)
 
     if(existingMail){
       if(existingPassword){
