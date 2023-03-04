@@ -5,6 +5,7 @@ const dataloadRoutes = require("./service/dataloadRoutes");
 const favoritesRoutes = require("./routers/favoritesRoutes");
 const publicationsRoutes = require("./routers/publicationsRoutes");
 const donacionRoutes = require("./routers/donacionRoutes");
+const provinciasRoutes = require("./routers/provinciasRoutes");
 var morgan = require("morgan");
 
 const router = Router();
@@ -19,5 +20,6 @@ router.use("/favorites", favoritesRoutes);
 router.use("/publications", publicationsRoutes);
 //DONACIONES
 router.use("/donaciones", donacionRoutes);
-
+//PROVINCIAS Y LOCALIDADES
+router.use("/provincias", provinciasRoutes);
 module.exports = router;
