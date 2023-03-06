@@ -10,7 +10,6 @@ module.exports = {
   const user= Users.findAll({
     where:{id:idUser}
   })
-
   return user
 }
 }
