@@ -3,6 +3,7 @@ const { getPets} = require("../controlers/controllersPets/getPets")
 const { getPetsByName} = require("../controlers/controllersPets/getPetsByName")
 const { getPetsById} = require("../controlers/controllersPets/getPetsById")
 const { postPets} = require("../controlers/controllersPets/postPets")
+const { petChanger} = require("../controlers/controllersPets/petChanger")
 
 const petsRoutes = Router();
 petsRoutes.get('/:idPet', async (req, res)=>{
@@ -26,7 +27,7 @@ petsRoutes.post('/', async (req, res)=>{
 })
 petsRoutes.put('/',  async (req, res)=>{
     const petChangeProperties = req.body
-    try{res.status(200).json( await userChanger(petChangeProperties))}
+    try{res.status(200).json( await petChanger(petChangeProperties))}
     catch(error){res.status(400).json({Error: error.message})} 
 })
 
