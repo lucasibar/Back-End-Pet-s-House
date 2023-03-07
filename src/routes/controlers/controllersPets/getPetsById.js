@@ -9,7 +9,7 @@ try{
     }, 
     includes:Users
   });
-
+if(searchPetByName.active===false) return 'Esta mascota ya no esta disponible'
  const userDB = await Users.findByPk(searchPetByName.UserId)
   return {
     User: userDB,

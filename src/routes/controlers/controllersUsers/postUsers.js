@@ -9,8 +9,13 @@ module.exports = {
     password 
     }){
   const newUser = await Users.create({name, image, email, password})
+  const user = await Users.findAll({
+    where:{
+      email:email
+    }
+  })
   
-  return `Se creo con exito el usuario ${name}`
+  return user[0]
 }
 }
  
