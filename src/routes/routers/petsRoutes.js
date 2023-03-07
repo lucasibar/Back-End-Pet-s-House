@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getPets} = require("../controlers/controllersPets/getPets")
 const { getPetsByName} = require("../controlers/controllersPets/getPetsByName")
+const { petChanger} = require("../controlers/controllersPets/petChanger")
 const { getPetsById} = require("../controlers/controllersPets/getPetsById")
 const { postPets} = require("../controlers/controllersPets/postPets")
 
@@ -26,7 +27,7 @@ petsRoutes.post('/', async (req, res)=>{
 })
 petsRoutes.put('/',  async (req, res)=>{
     const petChangeProperties = req.body
-    try{res.status(200).json( await userChanger(petChangeProperties))}
+    try{res.status(200).json( await petChanger(petChangeProperties))}
     catch(error){res.status(400).json({Error: error.message})} 
 })
 
