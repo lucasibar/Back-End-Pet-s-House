@@ -1,12 +1,16 @@
-const { Users } = require("../../../db");
-const sendMail = require("../controllersMailer");
+const { Router } = require("express");
+const { User } = require("../../db");
+const sendMail = require("../controlers/controllersMailer");
 
-module.exports = {
-  postUsers: async function ({ name, image, email, password }) {
-    const newUser = await Users.create({ name, image, email, password });
+const contactoRoutes = Router();
 
-    // Notificacion por mail
-    const bienvenidaHTML = `
+contactoRoutes.post("/", async (req, res) => {
+  try {
+    const { UserId, infoPublicador } = req.body;
+    const { name, email } = await User.findByPk(UserId);
+    const nombreEncargado = infoPublicador.name;
+    const mailEncargado = infoPublicador.email;
+    const contactoHTML = `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">
  <head>
@@ -15,7 +19,7 @@ module.exports = {
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="telephone=no" name="format-detection">
-  <title>Nueva plantilla</title><!--[if (mso 16)]>
+  <title>Donacion</title><!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
@@ -76,10 +80,7 @@ a[x-apple-data-detectors] {
                   <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
                    <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr>
-                      <td align="center" style="padding:0;Margin:0"><h1 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#000000"><strong>Bienvenido a Pets House</strong></h1></td>
-                     </tr>
-                     <tr>
-                      <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://mippbx.stripocdn.email/content/guids/CABINET_e728d97352beffb6d8d42a89e2aa9211389f06c5001a86383fe988e1eac60ef9/images/imagen3.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" height="120"></td>
+                      <td align="center" style="padding:0;Margin:0"><h1 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:roboto, 'helvetica neue', helvetica, arial, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#000000"><strong>&nbsp;Pets House</strong></h1></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -93,13 +94,36 @@ a[x-apple-data-detectors] {
           <td align="center" style="padding:0;Margin:0">
            <table class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
              <tr>
+              <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px"><!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:270px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" class="es-left" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                 <tr>
+                  <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:270px">
+                   <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://mippbx.stripocdn.email/content/guids/CABINET_e728d97352beffb6d8d42a89e2aa9211389f06c5001a86383fe988e1eac60ef9/images/imagen1.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" height="150"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td><td style="width:20px"></td><td style="width:270px" valign="top"><![endif]-->
+               <table cellpadding="0" cellspacing="0" class="es-right" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:270px">
+                   <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://mippbx.stripocdn.email/content/guids/CABINET_e728d97352beffb6d8d42a89e2aa9211389f06c5001a86383fe988e1eac60ef9/images/imagen6.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" height="150"></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table><!--[if mso]></td></tr></table><![endif]--></td>
+             </tr>
+             <tr>
               <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                  <tr>
                   <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:560px">
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr>
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">¡Bienvenido/a a Pets House! Estamos muy agradecidos por haber elegido nuestra plataforma para encontrar a su nuevo amigo peludo. Sabemos lo importante que es para usted encontrar la mascota adecuada, y estamos aquí para ayudarle en cada paso del camino.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">En Pets House, nos enorgullece tener una amplia selección de mascotas para la adopción y un proceso de adopción fácil y sencillo. Nuestro objetivo es asegurarnos de que encuentre la mascota perfecta para su hogar, y estamos emocionados de ayudarle en su búsqueda.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Le agradecemos nuevamente por registrarse en nuestra plataforma, y esperamos poder hacer una diferencia positiva en su vida al ayudarle a encontrar su nuevo compañero de vida. ¡Gracias por confiar en nosotros!<br></p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Estimado/a ${name} </p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">¡Gracias por su interés en adoptar una mascota de <strong>Pets House</strong>! Su solicitud ha sido recibida y apreciamos su compromiso en proporcionar un hogar amoroso a una mascota necesitada.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Para ayudarle en su búsqueda, le proporcionamos los datos de la persona encargada de la adopción de la mascota a la que está interesado/a. Por favor, póngase en contacto directamente con ${nombreEncargado} en ${mailEncargado} para obtener más información sobre la mascota y hacer arreglos para una posible reunión.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">En <strong>Pets House</strong>, trabajamos arduamente para asegurarnos de que todas nuestras mascotas sean cuidadas adecuadamente y se adapten bien a sus nuevos hogares. Si tiene alguna pregunta en el ínterin, no dude en ponerse en contacto con nosotros. Estamos aquí para ayudarle en cada paso del camino.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">¡Gracias por su apoyo a nuestra causa y por darle una oportunidad a una mascota necesitada de un hogar amoroso!</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Atentamente,</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">El equipo de <strong>Pets House<br></strong><br></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:17px;color:#333333;font-size:11px">Nombre del encargado/a: ${nombreEncargado} &nbsp;<br>Correo electrónico o número de teléfono: ${mailEncargado} &nbsp;</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:15px;color:#333333;font-size:10px"><br></p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -134,13 +158,11 @@ a[x-apple-data-detectors] {
  </body>
 </html>
     `;
-    const response = await sendMail(
-      email,
-      "Bienvenido a Pets House",
-      bienvenidaHTML
-    );
-    ////
+    const response = await sendMail(email, "Contacto Pets House", contactoHTML);
+    res.status(200).send(response);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
-    return `Se creo con exito el usuario ${name}`;
-  },
-};
+module.exports = contactoRoutes;
