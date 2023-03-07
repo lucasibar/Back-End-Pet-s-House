@@ -6,6 +6,7 @@ const favoritesRoutes = require("./routers/favoritesRoutes");
 const publicationsRoutes = require("./routers/publicationsRoutes");
 const donacionRoutes = require("./routers/donacionRoutes");
 const provinciasRoutes = require("./routers/provinciasRoutes");
+const contactoRoutes = require("./routers/contactoRoutes");
 var morgan = require("morgan");
 
 const router = Router();
@@ -22,4 +23,7 @@ router.use("/publications", publicationsRoutes);
 router.use("/donaciones", donacionRoutes);
 //PROVINCIAS Y LOCALIDADES
 router.use("/provincias", provinciasRoutes);
+//CONTACTO
+router.use("/contacto", contactoRoutes);
+
 module.exports = router;
