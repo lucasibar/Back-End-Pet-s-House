@@ -503,4 +503,13 @@ donacionRoutes.get("/mail", async (req, res) => {
   }
 });
 
+donacionRoutes.get("/", async (req, res) => {
+  try {
+    const donaciones = await Donations.findAll({ include: Users });
+    res.status(200).json(donaciones);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 module.exports = donacionRoutes;
