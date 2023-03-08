@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getPets} = require("../controlers/controllersPets/getPets")
 const { getPetsByName} = require("../controlers/controllersPets/getPetsByName")
+const { petChanger} = require("../controlers/controllersPets/petChanger")
 const { getPetsById} = require("../controlers/controllersPets/getPetsById")
 const { postPets} = require("../controlers/controllersPets/postPets")
 const { petChanger} = require("../controlers/controllersPets/petChanger")
