@@ -6,6 +6,7 @@ const favoritesRoutes = require("./routers/favoritesRoutes");
 const publicationsRoutes = require("./routers/publicationsRoutes");
 const donacionRoutes = require("./routers/donacionRoutes");
 const provinciasRoutes = require("./routers/provinciasRoutes");
+const reviewsRoutes = require("./routers/reviewsRoutes");
 const contactoRoutes = require("./routers/contactoRoutes");
 var morgan = require("morgan");
 
@@ -19,6 +20,7 @@ router.use("/users", userRoutes);
 router.use("/pets", petsRoutes);
 router.use("/favorites", favoritesRoutes);
 router.use("/publications", publicationsRoutes);
+router.use("/reviews", reviewsRoutes)
 //DONACIONES
 router.use("/donaciones", donacionRoutes);
 //PROVINCIAS Y LOCALIDADES
