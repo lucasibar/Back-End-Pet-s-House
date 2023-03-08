@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Donations, User } = require("../../db");
+const { Donations, Users } = require("../../db");
 const sendMail = require("../controlers/controllersMailer");
 const donacionRoutes = Router();
 
@@ -25,7 +25,7 @@ donacionRoutes.post("/guardar", async (req, res) => {
     });
 
     // Notificacion por mail
-    const { name, email } = await User.findByPk(userID);
+    const { name, email } = await Users.findByPk(userID);
     const donacionHTML = `
     <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -498,6 +498,15 @@ donacionRoutes.get("/mail", async (req, res) => {
       donacionHTML
     );
     res.status(200).send(response);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+donacionRoutes.get("/", async (req, res) => {
+  try {
+    const donaciones = await Donations.findAll({ include: Users });
+    res.status(200).json(donaciones);
   } catch (error) {
     res.status(400).send(error.message);
   }
