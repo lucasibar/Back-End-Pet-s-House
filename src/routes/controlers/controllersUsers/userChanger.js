@@ -7,7 +7,7 @@ module.exports = {
   const newUser = await Users.update(userChangeProperties, {
     where:{id:idUser}
   })
-  const user= Users.findAll({
+  const user= await Users.findAll({
     where:{id:idUser}
   })
   return user
