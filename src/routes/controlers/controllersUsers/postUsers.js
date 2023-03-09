@@ -3,8 +3,14 @@ const sendMail = require("../controllersMailer");
 
 module.exports = {
   postUsers: async function ({ name, email, password }) {
-    const newUser = await Users.create({ name, email, password });
-
+    const [newUser, created] = await Users.findOrCreate({
+      where:{
+        name, 
+        email, 
+        password     
+      } 
+    });
+    if(created) return "Este usuario ya existe"
     // Notificacion por mail
     const bienvenidaHTML = `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

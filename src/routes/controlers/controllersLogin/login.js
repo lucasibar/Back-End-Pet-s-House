@@ -4,23 +4,23 @@ module.exports = {
   login: async function (email, password) {
     try{
       
-      const emailValidation = await Users.findAll({
+      const emailValidation = await Users.findOne({
         where:{
           email: email
         }
       });
-      const existingMail = emailValidation[0].toJSON()
-      const passwordValidation = await Users.findAll({
+      const passwordValidation = await Users.findOne({
         where:{
           email : email,
           password: password
         }
       });
-      const existingPassword = passwordValidation[0].toJSON()
-
-    if(existingMail){
-      if(existingPassword){
-        return existingPassword
+      
+      if(emailValidation !== null){
+        const usuario =emailValidation.toJSON()
+        if(usuario.active === false) return 'Este usuario fue dado de baja'
+        if(passwordValidation !== null){
+        return passwordValidation.toJSON()
       }
       return 'Contraseña invalida'
     }
