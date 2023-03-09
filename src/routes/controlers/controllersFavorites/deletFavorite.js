@@ -1,14 +1,12 @@
-const { Users, Pets, FavoritesPets } = require("../../../db");
+const { Users, Pets } = require("../../../db");
 
 module.exports = {
   deletFavorite: async function (idPets, idUser) {
     try {
-      await FavoritesPets.destroy({
-        where: {
-          UserId: idUser,
-          PetId: idPets,
-        },
-      });
+      const User = await Users.findByPk(idUser);
+      const Pet = await Pets.findByPk(idPets);
+
+      await Pet.removeUser(User);
 
       return "Se elimino exitosamente la mascota de la lista de favoritos";
     } catch {
