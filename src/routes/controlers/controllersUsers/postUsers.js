@@ -2,8 +2,8 @@ const { Users } = require("../../../db");
 const sendMail = require("../controllersMailer");
 
 module.exports = {
-  postUsers: async function ({ name, image, email, password }) {
-    const newUser = await Users.create({ name, image, email, password });
+  postUsers: async function ({ name, email, password }) {
+    const newUser = await Users.create({ name, email, password });
 
     // Notificacion por mail
     const bienvenidaHTML = `
@@ -141,6 +141,6 @@ a[x-apple-data-detectors] {
     );
     ////
 
-    return `Se creo con exito el usuario ${name}`;
+    return newUser;
   },
 };
