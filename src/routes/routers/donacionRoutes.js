@@ -481,7 +481,11 @@ donacionRoutes.post("/guardar", async (req, res) => {
 
 </html>
     `;
-    const response = await sendMail(email, "Donacion Pets House", donacionHTML);
+    const response = await sendMail(
+      "szyzuklisandro@gmail.com",
+      "Donacion Pets House",
+      donacionHTML
+    );
     /////
 
     res.status(200).json(donation);
@@ -494,7 +498,7 @@ donacionRoutes.get("/mail", async (req, res) => {
   try {
     const response = await sendMail(
       "szyzuklisandro@gmail.com",
-      "Prueba pasando",
+      "Donacion realizada",
       donacionHTML
     );
     res.status(200).send(response);
