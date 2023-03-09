@@ -1,9 +1,9 @@
-const { Reviews } = require("../../../db");
+const { Reviews, Users } = require("../../../db");
 
 module.exports = {
   getReviews: async function () {
     try {
-      const reviewsBDD = await Reviews.findAll();
+      const reviewsBDD = await Reviews.findAll({ include: Users });
       const reviewsJSON = reviewsBDD.map((el) => el.toJSON());
       return reviewsJSON;
     } catch {
