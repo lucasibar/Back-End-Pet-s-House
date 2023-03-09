@@ -7,9 +7,7 @@ const {
 const validateDataBase = async (req, res, next) => {
   const pets = await getPets();
   const users = await getUsers();
-  const provincias = await getProvincias();
-
-  if (pets.length > 0 || users.length > 0 || provincias.length > 0) {
+  if (pets.length > 0 || users.length > 0) {
     return res.status(200).json("YA HAY SE CARGARON DATOS EN LA BASE DE DATOS");
   }
   next();
@@ -75,11 +73,12 @@ const ejemplosUsers = [
     email: "pepe@gmail.com",
     password: 12343,
     rol: "usuario",
-    logged:false
-},{
-    name:"pepita",
-    image:"",
-    email:"lucas@gmail.com",
+    logged: false,
+  },
+  {
+    name: "pepita",
+    image: "",
+    email: "lucas@gmail.com",
     password: 12345,
     rol: "administrador",
     logged: false,

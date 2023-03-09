@@ -19,19 +19,6 @@ dataload.get("/", validateDataBase, async (req, res) => {
       return newPet;
     });
 
-    // Aca cargo las provincias y las localidades correspondientes
-    const Prov = await Provincias.bulkCreate(ejemploProvincias);
-    const provincias = await Provincias.findAll();
-
-    ejemploLocalidades.map((localidad, index) => {
-      localidad.map(async (loc) => {
-        const localidad = await Localidades.create({
-          name: loc,
-          ProvId: index + 1,
-        });
-      });
-    });
-
     res.status(200).json("Se subieron datos de ejemplo en la base de datos");
   } catch (error) {
     res.status(400).json({ Error: error.message });
